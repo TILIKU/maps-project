@@ -15,17 +15,18 @@ const Map = ({setCoordinates, setBounds, coordinates}) => {
         <div className={classes.mapContainer}>
             <GoogleMapReact
                 bootstrapURLKeys={{key: 'AIzaSyBbDHYCESqSh_KopBO6xipSAUlPI5c0J5E'}}
-                defaultCenter={coordinates}
+                defaultCenter={{lat:0,lng:0}}
                 center={coordinates}
                 defaultZoom={14}
                 margin={[50, 50, 50, 50]}
                 options={""}
                 onChange={(e) => {
-                    setCoordinates({lat:0, lng:0})
+                    setCoordinates({lat:e.center.lat, lng:e.center.lng})
                     console.log(e)
                     console.log(coordinates)
+                    console.log("cum")
                 }}
-                onChildClick={""}
+                onChildClick={() => {}}
             >
 
             </GoogleMapReact>
