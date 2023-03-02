@@ -21,6 +21,6 @@ export const getPlacesData = async (sw, ne) => {
 
         return data;
     } catch (error){
-        console.log("cum")
+        console.log(error)
     }
 }

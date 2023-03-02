@@ -7,16 +7,13 @@ import Map from "./components/Map/Map";
 
 import { getPlacesData } from "./api";
 
-function timeout(delay) {
-    return new Promise( res => setTimeout(res, delay) );
-}
 
 
 const App = () => {
     const [places, setPlaces] = useState([]);
 
     const [ coordinates, setCoordinates] = useState({});
-    const [ bounds , setBounds] = useState(null);
+    const [ bounds , setBounds] = useState({ sw:0,ne:0});
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
@@ -26,12 +23,10 @@ const App = () => {
 
     useEffect(() => {
         console.log(bounds)
-        getPlacesData( )
+        getPlacesData(bounds.sw,bounds.ne)
         
             .then((data) => {
-                console.log("cocl and")
-                timeout(100000); //for 1 sec delay
-                console.log("balls")
+                
                 console.log("places: " + data);
                 setPlaces(data);
             })
