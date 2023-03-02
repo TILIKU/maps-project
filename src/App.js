@@ -22,12 +22,9 @@ const App = () => {
     },[]);
 
     useEffect(() => {
-        console.log(bounds)
-        getPlacesData(bounds.sw,bounds.ne)
-        
+            getPlacesData(bounds.sw,bounds.ne)
             .then((data) => {
-                
-                console.log("places: " + data);
+                console.log(data);
                 setPlaces(data);
             })
     }, [coordinates, bounds]);
