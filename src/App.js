@@ -7,6 +7,10 @@ import Map from "./components/Map/Map";
 
 import { getPlacesData } from "./api";
 
+function timeout(delay) {
+    return new Promise( res => setTimeout(res, delay) );
+}
+
 
 const App = () => {
     const [places, setPlaces] = useState([]);
@@ -21,8 +25,13 @@ const App = () => {
     },[]);
 
     useEffect(() => {
-        getPlacesData(bounds.sw, bounds.ne)
+        console.log(bounds)
+        getPlacesData( )
+        
             .then((data) => {
+                console.log("cocl and")
+                timeout(100000); //for 1 sec delay
+                console.log("balls")
                 console.log("places: " + data);
                 setPlaces(data);
             })
