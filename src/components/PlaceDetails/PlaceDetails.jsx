@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Typography, Card, CardMedia, CardContent, CardActions,Chip} from "@material-ui/core"
+import {Box, Typography, Button, Card, CardMedia, CardContent, CardActions,Chip} from "@material-ui/core"
 import LocationOnIcon from "@material-ui/icons/LocationOn"
 import PhoneIcon from "@material-ui/icons/Phone"
 import Rating from "@material-ui/lab/Rating"
@@ -13,8 +13,8 @@ const PlaceDetails = ({place}) => {
     return (
         <Card elevation={6}>
             <CardMedia 
-            styles={{height:350}}
-            image={place.photo ? place.photo.image.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
+            style={{height:350}}
+            image={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
             title={place.name}
             />
             <CardContent>

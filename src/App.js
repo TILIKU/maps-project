@@ -25,6 +25,7 @@ const App = () => {
             getPlacesData(bounds.sw,bounds.ne)
             .then((data) => {
                 setPlaces(data);
+                console.log(data)
             })
     }, [coordinates, bounds]);
 
