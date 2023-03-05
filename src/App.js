@@ -12,24 +12,23 @@ import { getPlacesData } from "./api";
 const App = () => {
     const [places, setPlaces] = useState([]);
 
-    const [ coordinates, setCoordinates] = useState({});
+    const [coords, setCoords] = useState({});
     const [ bounds , setBounds] = useState({});
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-            setCoordinates({lat:latitude,lng:longitude})
-        })
-    },[]);
+          setCoords({ lat: latitude, lng: longitude });
+        });
+      }, []);
 
     useEffect(() => {
-            getPlacesData(bounds.sw,bounds.ne)
+            getPlacesData(bounds.ne,bounds.sw)
             .then((data) => {
+                console.log(bounds)
                 setPlaces(data);
-                // console.log(data)
-                // console.log("places:")
-                // console.log(places)
+                console.log(data)
             })
-    }, [coordinates, bounds]);
+    }, [coords, bounds]);
 
     return(
         <>
@@ -41,9 +40,10 @@ const App = () => {
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <Map 
-                        setCoordinates={setCoordinates}
+                        setCoords={setCoords}
                         setBounds={setBounds}
-                        coordinates={coordinates}
+                        coords={coords}
+                        places={places}
                     />
                 </Grid>
             </Grid>
