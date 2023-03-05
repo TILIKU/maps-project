@@ -1,4 +1,4 @@
-import React, {useState, useEffect, createRef} from "react";
+import React, {useState, useEffect, createRef,useRef} from "react";
 import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select, Card } from "@material-ui/core";
 import useStyles from "./styles"
 
@@ -11,12 +11,11 @@ const List = ({places, childClicked, isLoading}) => {
     const [elRefs, setElRefs] = useState([]);
 
     useEffect(() => {
-        const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef());
-    
-        console.log(refs)
+        const refs = Array(places?.length).fill().map((_, i) => (elRefs[i] || createRef()) && console.log(_));
 
         setElRefs(refs)
     }, [places])
+    useEffect(() => {console.log(elRefs.current) })
 
     return (
         <div className={classes.container}>
@@ -53,7 +52,6 @@ const List = ({places, childClicked, isLoading}) => {
                             place={place}
                             selected={Number(childClicked) === i}
                             refProp={elRefs}
-                            i={i}
 
                         />
                     </Grid>
