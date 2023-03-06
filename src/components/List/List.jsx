@@ -11,12 +11,12 @@ const List = ({places, childClicked, isLoading}) => {
     const [elRefs, setElRefs] = useState([]);
 
     useEffect(() => {
-        const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef());
-
+        const refs =  Array(places?.length).fill().map((_, i) => elRefs[i] || createRef());
         setElRefs(refs)
+            
     }, [places])
 
-    useEffect(() => {console.log(elRefs.current) })
+    useEffect(() => {console.log(elRefs) })
 
     return (
         <div className={classes.container}>
@@ -53,7 +53,7 @@ const List = ({places, childClicked, isLoading}) => {
                             place={place}
                             selected={Number(childClicked) === i}
                             refProp={elRefs}
-
+                            i={i}
                         />
                     </Grid>
                 ))}
